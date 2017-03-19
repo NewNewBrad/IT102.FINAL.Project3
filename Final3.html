@@ -13,27 +13,31 @@ Roll gives results of each of the 5 dice.
 *************POKER DICE *************** */
 
 function Die(sides) {
-this.sides = sides;
+	this.sides = sides;
+	this.values = [];
+		for (i= 0; i<this.sides; i++)
+		{this.values[i]= i;}
 
-this.values = [];
-for (i= 0; i<this.sides; i++)
-{this.values[i]=i;}
-
-this.roll = function () {
-var showing = Math.ceil(Math.random()*this.sides);
-return this.values[showing];
-};
+	this.roll = function () {
+		var showing = Math.floor(Math.random()*this.sides);
+		// Logic Error; Changed Math.ceil to Math.floor to achieve 0-5 count. 
+		return this.values[showing];
+	};
 
 var pokerSide = ["A", "K", "Q", "J", "10","9"];
-this.poker = function () {
-for (i= 0; i<this.sides; i++)
-{this.values[i] = pokerSide[i];}
-};
+	this.poker = function () {
+		for (i= 0; i<this.sides; i++)
+		{this.values[i] = pokerSide[i];}
+}
 
-var myDie = [];
+}; // Error; closed the Die() with a closing bracket.
+
+
+
+var myDice = []; //Syntax Error, myDie changed to myDice.
 
 for (c=0; c<5; c++){
-myDice[c] = new Die(5);
+myDice[c] = new Die(6);//Error, changed Die(5) to Die(6).
 myDice[c].poker();
 }
 
